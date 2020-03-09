@@ -25,7 +25,7 @@ class TestEmployee(unittest.TestCase):
 		"""Tests if default raise works"""
 		my_employee = Employee('justin', 'williams', 80_000)
 		my_employee.give_raise()
-		self.assertEqual(my_employee.salary(), 85_000)
+		self.assertEqual(my_employee.salary, 85_000)
 
 
 	def test_give_custom_raise(self):
@@ -34,7 +34,7 @@ class TestEmployee(unittest.TestCase):
 		my_employee.give_raise()
 		my_employee.give_raise(10_000)
 		my_employee.give_raise(0)
-		self.assertEqual(my_employee.salary(), 95_000)
+		self.assertEqual(my_employee.salary, 95_000)
 
 if __name__ == '__main__':
     unittest.main()
