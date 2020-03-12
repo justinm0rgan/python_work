@@ -20,10 +20,10 @@ class Employee:
 		"""Adds $5,000 as raise to salary by default, or allows the entry of custom raise amount"""
 		self.salary += int(raise_amount)
 
-# my_employee = Employee('Justin', 'Williams', 80000)
-# print(my_employee.format_name_salary())
-# input_raise = input("Please enter a raise amount: ")
-# my_employee.give_raise(input_raise)
+my_employee = Employee('Justin', 'Williams', 80000)
+print(my_employee.format_name_salary())
+input_raise = input("Please enter a raise amount: ")
+my_employee.give_raise(input_raise)
 
 
 
