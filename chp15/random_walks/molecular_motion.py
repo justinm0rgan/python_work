@@ -16,17 +16,17 @@ while True:
 	plt.style.use('classic')
 	fig, ax = plt.subplots(figsize=(15,9))
 	point_numbers = range(rw.num_points)
-	ax.plot(rw.x_values, rw.y_values, c=point_numbers, cmap=plt.cm.Blues, edgecolors='none', s=1, linewidth=10)
+	ax.plot(rw.x_values, rw.y_values, linewidth=5)
 
 	# Emphasize the first and last points.
-	ax.plot(0, 0, c='green', edgecolors='none', s=100)
-	ax.plot(rw.x_values[-1], rw.y_values[-1], c='red', edgecolors='none', s=100)
+	# ax.plot(0, 0, c='green')
+	# ax.plot(rw.x_values[-1], rw.y_values[-1], c='red')
 
 	# Remove the axes.
 	ax.get_xaxis().set_visible(False)
 	ax.get_yaxis().set_visible(False)
 
-	# plt.savefig('random_walk_Blues_colormap_start_end_noaxis_50_000_screensize.png', bbox_inches='tight')
+	plt.savefig('molecular_motion.png', bbox_inches='tight')
 	plt.show()
 
 	keep_running = input("Make another walk? (y/n): ")
