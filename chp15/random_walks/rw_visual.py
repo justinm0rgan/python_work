@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from mod_random_walk import Randomwalk
+from refact_random_walk import Randomwalk
 
 while True:
 	# Make a random walk.
