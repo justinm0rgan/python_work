@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from random_walk import Randomwalk
+from mod_random_walk import Randomwalk
 
 while True:
 	# Make a random walk.
@@ -21,7 +21,7 @@ while True:
 	ax.get_xaxis().set_visible(False)
 	ax.get_yaxis().set_visible(False)
 
-	plt.savefig('random_walk_Blues_colormap_start_end_noaxis_50_000_screensize.png', bbox_inches='tight')
+	plt.savefig('random_walk_Blues_colormap_mod_ran_walk.png', bbox_inches='tight')
 	plt.show()
 
 	keep_running = input("Make another walk? (y/n): ")
