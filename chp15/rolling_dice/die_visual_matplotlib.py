@@ -1,6 +1,6 @@
 # Try using Matplotlib to make a die-rolling visualization.
 import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.ticker as ticker
 
 from die import Die
 
@@ -28,8 +28,10 @@ fig, ax  = plt.subplots(figsize=(15,9))
 
 y_pos = frequencies
 x_values = list(range(1, max_result+1))
+tick_spacing = 1
 
 plt.bar(x_values, y_pos)
+ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
 plt.ylabel('Frequency of Result')
 plt.xlabel('Result')
 plt.title('Result of rolling two D6 dice 10_000 times')
