@@ -5,17 +5,19 @@ import numpy as np
 from die import Die
 
 # Create a D6
-die = Die()
+die_1 = Die()
+die_2 = Die()
 
 # Make some rolls, and store results in a list.
 results = []
-for roll_num in range(1000):
-	result = die.roll()
+for roll_num in range(10_000):
+	result = die_1.roll() + die_2.roll()
 	results.append(result)
 
 # Analyze the results.
 frequencies = []
-for value in range(1, die.num_sides+1):
+max_result = die_1.num_sides + die_2.num_sides
+for value in range(1, max_result+1):
 	frequency = results.count(value)
 	frequencies.append(frequency)
 
@@ -24,15 +26,13 @@ for value in range(1, die.num_sides+1):
 plt.style.use('seaborn-dark')
 fig, ax  = plt.subplots(figsize=(15,9))
 
-y_pos = np.arange(len(frequencies))
-x_values = list(range(1, die.num_sides+1))
+y_pos = frequencies
+x_values = list(range(1, max_result+1))
 
-ax.bar(y_pos, x_values, align='center')
-ax.set_yticks(y_pos)
-ax.set_yticklabels(frequencies)
-ax.set_ylabel('Frequency of Result')
-ax.set_xlabel('Result')
-ax.set_title('Result of rolling one D6 die 1000 times')
+plt.bar(x_values, y_pos)
+plt.ylabel('Frequency of Result')
+plt.xlabel('Result')
+plt.title('Result of rolling two D6 dice 10_000 times')
 
-plt.savefig('one_D6_bar_matplotlib.png', bbox_inches='tight')
+plt.savefig('two_D6_bar_matplotlib.png', bbox_inches='tight')
 plt.show()
