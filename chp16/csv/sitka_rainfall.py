@@ -13,7 +13,7 @@ with open(filename) as f:
 	for row in reader:
 		current_date = datetime.strptime(row[2], '%Y-%m-%d')
 		dates.append(current_date)
-		prcp = (row[3])
+		prcp = float(row[3])
 		prcps.append(prcp)
 
 # Plot the high temperatures.
@@ -21,13 +21,13 @@ plt.style.use('seaborn')
 fig, ax = plt.subplots(figsize=(15,9))
 ax.plot(dates, prcps, c='purple')
 
-
 # Format plot
 title = "Daily precipitation - 2018\nSita, AK"
 plt.title(title, fontsize=24)
-plt.xlabel('Dates', fontsize=16)
+plt.xlabel('', fontsize=16)
 fig.autofmt_xdate()
 plt.ylabel("Precipitation (in)", fontsize=16)
 plt.tick_params(axis='both', which='major', labelsize=16)
 
+plt.savefig('sitka_precipitation_2018.png', bbox_inches='tight')
 plt.show()
