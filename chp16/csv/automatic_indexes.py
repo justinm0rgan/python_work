@@ -16,19 +16,19 @@ with open(filename) as f:
 	dates, highs, lows = [], [], []
 	for row in reader:
 		current_date = datetime.strptime(row[2], '%Y-%m-%d')
-		if header_row == 'TMIN':
-			low = row_tmin
-		if header_row == 'TMAX':
-			high = row_tmax
-			try:
-				high = int(row_tmin)
-				low = int(row_tmax)
-			except ValueError:
-				print(f"Missing data for {current_date}")
-			else:
-				dates.append(current_date)
-				highs.append(high)
-				lows.append(low)
+		if row == 'TMAX':
+			high = row
+		if row == 'TMIN':
+			low = row
+		# try:
+		# 	high = int(row['TMAX'].Data_value)
+		# 	low = int(row['TMIN'].Data_value)
+		# except ValueError:
+		# 	print(f"Missing data for {current_date}")
+		else:
+			dates.append(current_date)
+			highs.append(high)
+			lows.append(low)
 
 
 # Graphing code
