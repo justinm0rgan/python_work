@@ -22,7 +22,7 @@ fig, ax = plt.subplots(figsize=(15,9))
 ax.plot(dates, prcps, c='purple')
 
 # Format plot
-title = "Daily precipitation - 2018\nSita, AK"
+title = "Daily precipitation - 2018\nSitka, AK"
 plt.title(title, fontsize=24)
 plt.xlabel('', fontsize=16)
 fig.autofmt_xdate()
