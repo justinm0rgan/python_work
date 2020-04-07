@@ -8,6 +8,8 @@ import csv
 import matplotlib.pyplot as plt
 import sys
 from datetime import datetime
+from date_parser import DateParser
+
 
 # Get all the input from the user
 csv_file = sys.argv[1]
@@ -23,18 +25,16 @@ with open(csv_file) as f:
     # Get dates and precipitation data
 	dates, prcps = [],[]
 	for row in reader:
-		parsed_date = row[date_column_number]
-		if parsed_date == datetime.strptime(parsed_date, '%Y-%m-%d').strftime('%Y-%m-%d'):
-			parsed_date = datetime.strptime(parsed_date, '%Y-%m-%d')
-		elif parsed_date == datetime.strptime(parsed_date, '%m/%d/%y').strftime('%m/%d/%y'):
-			parsed_date = datetime.strptime(parsed_date, '%m/%d/%y')
-		try:
-			parsed_precipitation = float(row[precip_data_column_number])
-		except ValueError:
-			print(f"Missing data for {parsed_date}")
-		else:
+		parser = DateParser(row[date_column_number])
+		parsed_date = parser.parse()
+		datetime.strftime(parsed_date, '%Y-%m-%d')
+		if parsed_date != None:
 			dates.append(parsed_date)
-			prcps.append(parsed_precipitation)
+		else:
+			print(f"Missing data for {parsed_date}")
+		parsed_precipitation = float(row[precip_data_column_number])
+		prcps.append(parsed_precipitation)
+		
 
 # Plot the points.
 plt.style.use('seaborn')
