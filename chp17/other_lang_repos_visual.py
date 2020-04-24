@@ -1,10 +1,20 @@
+# To use this program enter the agruments as follows...
+# python3 other_lang_repos_visual.py <LANGUAGE> <OUTPUT FILENAME>
+#
+# Example usage: 
+# python3 other_lang_repors_visual.py python python_repos.html
+
 import requests
+import sys
 
 from plotly.graph_objs import Bar
 from plotly import offline
 
+language = sys.argv[1]
+output_filename = sys.argv[2]
+
 # Make an API call and store the response.
-url = 'https://api.github.com/search/repositories?q=language:javascript&sort=stars'
+url = f'https://api.github.com/search/repositories?q=language:{language}&sort=stars'
 headers = {'Accept': 'application/vnd.github.v3+json'}
 r = requests.get(url, headers=headers)
 print(f"Status code: {r.status_code}")
@@ -39,7 +49,7 @@ data = [{
 }]
 
 my_layout = {
-	'title': 'Most-Starred Javascript Projects on Github',
+	'title': f'Most-Starred {language.title()} Projects on Github',
 	'titlefont': {'size': 28},
 	'xaxis': {
 		'title': 'Repository',
@@ -54,4 +64,4 @@ my_layout = {
 }
 
 fig = {'data': data, 'layout': my_layout}
-offline.plot(fig, filename='javascript_repos.html')
+offline.plot(fig, filename= './output/' + output_filename)
